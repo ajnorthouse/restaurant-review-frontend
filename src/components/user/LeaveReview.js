@@ -10,6 +10,16 @@ export function LeaveReview(props) {
         - [hidden] Restaurant ID */
 
     return (
-        <div></div>
+        <div>
+            <form>
+                <lable>Rating:</lable>
+                <input>Rating</input>
+                
+                <lable>Description:</lable>
+                <input>Description</input>
+                
+                <button>Submit</button>
+            </form>
+        </div>
     );
 }

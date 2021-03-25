@@ -10,7 +10,18 @@ export function RestaurantView(props) {
         - Type of Cuisine */
 
     return (
-        <div></div>
+        <div>
+            <h1>Restaurant Name</h1>
+            <p>Type of Cuisine</p>
+            <p>Average Rating</p>
+            <p>Address</p>
+            <ul>
+                <h2>Reviews:</h2>
+                <li>Review</li>
+                <li>Review</li>
+                <li>Review</li>
+            </ul>
+        </div>
     );
     
 }
