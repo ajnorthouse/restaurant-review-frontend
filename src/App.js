@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import MainPage from './components/Home-Page/MainPage';
-import NavBar from './components//NavBar';
-import Footer from './components/Footer';
+import NavBar from './components/navbar/NavBar';
+import Home from './components/home/Home';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
     <div>
       <NavBar />
-      <MainPage />
+      <Home />
       <Footer />
     </div>
   );

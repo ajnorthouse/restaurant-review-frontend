@@ -2,7 +2,7 @@ import React from 'react';
 
 export function SearchBar(props) {
     return(
-        <form action="/searchbar" method="get">
+        <form action="/search" method="get">
             <label htmlFor="search-bar">
                 Search for Restaurants
             </label>
