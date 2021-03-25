@@ -1,6 +1,6 @@
 import React from 'react';
-import { LoginSignUp } from './conditionals/LoginSignUp';
-import { UserActions } from './conditionals/UserActions';
+import UserActions from './conditionals/UserActions';
+import LoginSignUp from './conditionals/LoginSignUp';
 
 export default function NavBar(props) {
 

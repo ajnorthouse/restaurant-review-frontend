@@ -1,29 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export function UserActions() {
+export default function UserActions() {
     return(
         <div>
-            <Search />
-            <Review />
-            <Update />
+            <SearchLink />
+            <ReviewLink />
+            <UpdateLink />
         </div>
     )
 }
 
-function Search(props) {
+function SearchLink(props) {
     return (
-        <button>Search Restaurants</button>
+        <Link to="/search">Search Restaurants</Link>
     )
 }
 
-function Review(props) {
+function ReviewLink(props) {
     return (
-        <button>Leave a Review</button>
+        <Link to="/review">Leave a Review</Link>
     )
 }
 
-function Update(props) {
+function UpdateLink(props) {
     return (
-        <button>Update a Restaurants' Info</button>
+        <Link to="/update-restaurant">Update a Restaurants' Info</Link>
     )
 }

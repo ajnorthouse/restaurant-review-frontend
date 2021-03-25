@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function SignUp(props){
+export default function SignUpPage(props){
     //This can ONLY create users, admins will be manually entered.
     /* This should have inputs for:
         - Username
@@ -14,17 +14,17 @@ export function SignUp(props){
     return (
         <div>
             <form>
-                <label>Name:</label>
+                {/* <label>Name:</label>
                 <input>Name</input>
                 
                 <label>Username:</label>
-                <input>Username</input>
+                <input>Username</input> */}
                 
                 {/* For matching passwords */}
-                <label>Password1:</label>
+                {/* <label>Password1:</label>
                 <input>Password1</input>
                 <label>Password2:</label>
-                <input>Password2</input>
+                <input>Password2</input> */}
                 
                 <button>Submit</button>
             </form>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function LeaveReview(props) {
+export default function LeaveReviewPage(props) {
     /* Should probably work by having the webpage send the id of the Restaurant as a variable. */
 
     /* Needs a form that accepts:

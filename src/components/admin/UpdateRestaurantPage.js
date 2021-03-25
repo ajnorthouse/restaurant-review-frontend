@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function UpdateRestaurantInfo(props) {
+export default function UpdateRestaurantPage(props) {
     /* Should probably work by having the webpage send the id of the Restaurant as a variable. */
 
     /* Needs a form that accepts:
@@ -15,14 +15,14 @@ export function UpdateRestaurantInfo(props) {
     return (
         <div>
             <form>
-                <label>Title:</label>
+                {/* <label htmlFor="">Title:</label>
                 <input>Title</input>
                 
                 <label>Type of Cuisine:</label>
                 <input>Type of Cuisine</input>
                 
                 <label>Address:</label>
-                <input>Address</input>
+                <input>Address</input> */}
 
                 <p>Average rating will be auto updated by db</p>
 
