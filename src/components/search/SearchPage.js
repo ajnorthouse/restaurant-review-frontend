@@ -1,8 +1,8 @@
 import React from 'react';
-import { SearchBar } from '../home/SearchBar';
+import { SearchBar } from './SearchBar';
 
 
-export default function Search(props) {
+export default function SearchPage(props) {
     /* this should have two states:
         - Something Searched
         - Blank / Nothing Searched */

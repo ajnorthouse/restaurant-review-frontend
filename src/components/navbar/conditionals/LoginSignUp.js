@@ -1,29 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export function LoginSignUp(props) {
+export default function LoginSignUp(props) {
     return (
         <div>
-            <Login />
-            <Logout />
-            <SignUP />
+            <LoginLink />
+            <LogoutLink />
+            <SignUpLink />
         </div>
     )
 }
 
-function Logout(props) {
+function LoginLink(props) {
     return (
-        <button>Logout</button>
+        <Link to="/login">Login</Link>
     )
 }
 
-function Login(props) {
+function LogoutLink(props) {
     return (
-        <button>Login</button>
+        <Link to="/logout">Logout</Link>
     )
 }
 
-function SignUP(props) {
+function SignUpLink(props) {
     return (
-        <button>Sign Up</button>
+        <Link to="/signup">Sign Up</Link>
     )
 }

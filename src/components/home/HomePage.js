@@ -1,7 +1,7 @@
 import React from 'react';
-import { SearchBar } from './SearchBar';
+import { SearchBar } from '../search/SearchBar';
 
-export default function Home(props) {
+export default function HomePage(props) {
 
 
     return (
