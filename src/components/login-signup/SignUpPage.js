@@ -1,6 +1,13 @@
 import React, { useState }  from 'react';
+import useLocalStorage from 'react-use-localstorage';
 
 export default function SignUpPage(props){
+    const [login, setLogin] = useLocalStorage('login', [{
+        username: '',
+        name: '',
+        id: -1,
+        type: ''
+    }]);
     const [username, setUsername] = useState("");
     const [name, setName] = useState("");
     const [password1, setPassword1] = useState("");
