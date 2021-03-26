@@ -9,13 +9,17 @@ export default function LoginPage(props){
     return (
         <div>
             <form>
-                {/* <label>Username:</label>
-                <input>Username</input>
+                <label htmlFor="username-input">Username:</label>
+                <input type="text" id="username-input" name="username-input">
+                    {/* This should be props.username */}
+                </input>
                 
-                <label>Password:</label>
-                <input>Password</input> */}
-                
-                <button>Login</button>
+                <label htmlFor="password-input">Password:</label>
+                <input type="password" id="password-input" name="password-input">
+                    {/* This should stay blank */}
+                </input>
+
+                <button type="submit">Login</button>
             </form>
             <div>
                 <p>Errors</p>

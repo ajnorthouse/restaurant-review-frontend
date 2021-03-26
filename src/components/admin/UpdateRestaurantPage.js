@@ -15,18 +15,27 @@ export default function UpdateRestaurantPage(props) {
     return (
         <div>
             <form>
-                {/* <label htmlFor="">Title:</label>
-                <input>Title</input>
-                
-                <label>Type of Cuisine:</label>
-                <input>Type of Cuisine</input>
-                
-                <label>Address:</label>
-                <input>Address</input> */}
+                <label htmlFor="title-input">Title:</label>
+                <input type="text" id="title-input" name="title-input">
+                    {/* This should be props.title */}
+                </input>
 
-                <p>Average rating will be auto updated by db</p>
+                <label htmlFor="cuisine-input">Type of Cuisine:</label>
+                <input type="text" id="cuisine-input" name="cuisine-input">
+                    {/* This should be props.cuisine */}
+                </input>
 
-                <button>Submit</button>
+                <label htmlFor="address-input">Address:</label>
+                <input type="text" id="address-input" name="address-input">
+                    {/* This should be props.address */}
+                </input>
+
+                <p>
+                    Average Rating:<br/>
+                    This will be recalculated after submitting the update.
+                </p>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
