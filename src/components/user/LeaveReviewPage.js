@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import useLocalStorage from 'react-use-localstorage';
 
 export default function LeaveReviewPage(props) {
     const [rating, setRating] = useState(0);

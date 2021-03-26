@@ -1,6 +1,14 @@
 import React, { useState }  from 'react';
+import {Redirect} from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
 export default function LoginPage(props){
+    const [login, setLogin] = useLocalStorage('login', [{
+        username: '',
+        name: '',
+        id: -1,
+        type: ''
+    }]);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
