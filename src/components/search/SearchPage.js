@@ -28,3 +28,19 @@ export default function SearchPage(props) {
         </div>
     );
 }
+
+
+async function callAPI(searchString, setError, setItems) {
+    try {
+        console.log(searchString);
+        const res = await fetch("http://swapi.dev/api/people/1");
+        if (!res.ok) {
+            throw Error(res.statusText);
+        }
+        const json = await res.json();
+        setError(json.name);
+    } catch (err) {
+        console.log(err);
+        setError(err.message);
+    }
+}

@@ -1,25 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function LeaveReviewPage(props) {
-    /* Should probably work by having the webpage send the id of the Restaurant as a variable. */
+    const [rating, setRating] = useState(0);
+    const [description, setDescription] = useState("");
+    const [error, setError] = useState("");
+    const handleSubmit = (event) => {
+        callAPI(rating, description, setError);
+        event.preventDefault();
+    }
 
-    /* Needs a form that accepts:
-        - Rating (out of 5)
-        - description
-        - [hidden] User ID
-        - [hidden] Restaurant ID */
+    const changeRating = (event) => {
+        setRating(event.target.value);
+    }
+    const changeDescription = (event) => {
+        setDescription(event.target.value);
+    }
+
+    let errors = error === "" ?
+        <span></span> :
+        <p className="error">{error}</p> ;
 
     return (
         <div>
-            <form>
-                <lable>Rating:</lable>
-                <input>Rating</input>
-                
-                <lable>Description:</lable>
-                <input>Description</input>
-                
-                <button>Submit</button>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="rating-input">Rating:</label>
+                    <input type="number" id="rating-input" name="rating-input"
+                            value={rating} onChange={changeRating}></input>
+
+                <label htmlFor="description-input">Description:</label>
+                    <input type="textarea" id="description-input" name="description-input"
+                            value={description} onChange={changeDescription}></input>
+
+                <button type="submit" value="submit">Submit</button>
             </form>
+            {errors}
         </div>
     );
+}
+
+
+async function callAPI(rating, description, setError) {
+    try {
+        console.log(rating);
+        console.log(description);
+        const res = await fetch("http://swapi.dev/api/people/1");
+        if (!res.ok) {
+            throw Error(res.statusText);
+        }
+        const json = await res.json();
+        setError(json.name);
+    } catch (err) {
+        console.log(err);
+        setError(err.message);
+    }
 }
