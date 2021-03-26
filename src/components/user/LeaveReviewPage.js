@@ -1,7 +1,12 @@
-import React, {useState} from 'react';
-import useLocalStorage from 'react-use-localstorage';
+import React, {useEffect, useState} from 'react';
+import {Redirect} from 'react-router-dom';
+import {ReactSession as Session} from 'react-client-session';
 
 export default function LeaveReviewPage(props) {
+    //Checks to see if user can access page
+    const needRedirect = (Session.get("type") !== "user");
+
+    //State constants
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState("");
     const [error, setError] = useState("");
@@ -21,8 +26,10 @@ export default function LeaveReviewPage(props) {
         <span></span> :
         <p className="error">{error}</p> ;
 
-    return (
-        <div>
+
+    return needRedirect ?
+        (<Redirect to="/"/>) :
+        (<div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="rating-input">Rating:</label>
                     <input type="number" id="rating-input" name="rating-input"

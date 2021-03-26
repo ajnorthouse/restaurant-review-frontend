@@ -1,13 +1,12 @@
 import React, { useState }  from 'react';
-import useLocalStorage from 'react-use-localstorage';
+import {Redirect} from 'react-router-dom';
+import {ReactSession as Session} from 'react-client-session';
 
 export default function SignUpPage(props){
-    const [login, setLogin] = useLocalStorage('login', [{
-        username: '',
-        name: '',
-        id: -1,
-        type: ''
-    }]);
+    //Checks to see if user can access page
+    const needRedirect = (Session.get("type") !== "");
+
+    //State constants
     const [username, setUsername] = useState("");
     const [name, setName] = useState("");
     const [password1, setPassword1] = useState("");
@@ -35,8 +34,9 @@ export default function SignUpPage(props){
         <span></span> :
         <p className="error">{error}</p> ;
 
-    return (
-        <div>
+    return needRedirect ?
+        (<Redirect to="/"/>) :
+        (<div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name-input">Name:</label>
                     <input type="text" id="name-input" name="name-input"

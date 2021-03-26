@@ -1,14 +1,12 @@
 import React, { useState }  from 'react';
 import {Redirect} from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import {ReactSession as Session} from 'react-client-session';
 
 export default function LoginPage(props){
-    const [login, setLogin] = useLocalStorage('login', [{
-        username: '',
-        name: '',
-        id: -1,
-        type: ''
-    }]);
+    //Checks to see if user can access page
+    const needRedirect = (Session.get("type") !== "");
+
+    //State constants
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -28,14 +26,15 @@ export default function LoginPage(props){
         <span></span> :
         <p className="error">{error}</p> ;
 
-    return (
-        <div>
+    return needRedirect ?
+        (<Redirect to="/"/>) :
+        (<div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username-input">Username:</label>
                     <input type="text" id="username-input" name="username-input"
                             value={username} onChange={changeUsername}></input>
 
-                <label htmlFor="password-input">Password1:</label>
+                <label htmlFor="password-input">Password:</label>
                     <input type="text" id="password-input" name="password-input"
                             value={password} onChange={changePassword}></input>
 

@@ -1,11 +1,18 @@
 import React, {useState} from 'react';
-import useLocalStorage from 'react-use-localstorage';
+import {Redirect} from 'react-router-dom';
+import {ReactSession as Session} from 'react-client-session';
 
 export default function UpdateRestaurantPage(props) {
+    //Checks to see if user can access page
+    const needRedirect = (Session.get("type") !== "admin");
+
+    //State constants
     const [title, setTitle] = useState("");
     const [cuisine, setCuisine] = useState("");
     const [address, setAddress] = useState("");
     const [error, setError] = useState("");
+
+    
     const handleSubmit = (event) => {
         callAPI(title, cuisine, address, setError);
         event.preventDefault();
@@ -25,8 +32,9 @@ export default function UpdateRestaurantPage(props) {
         <span></span> :
         <p className="error">{error}</p> ;
 
-    return (
-        <div>
+    return needRedirect ?
+        (<Redirect to="/"/>) :
+        (<div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title-input">Title:</label>
                     <input type="text" id="title-input" name="title-input"
