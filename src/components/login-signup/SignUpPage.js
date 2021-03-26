@@ -14,19 +14,27 @@ export default function SignUpPage(props){
     return (
         <div>
             <form>
-                {/* <label>Name:</label>
-                <input>Name</input>
+                <label htmlFor="name-input">Name:</label>
+                <input type="text" id="name-input" name="name-input">
+                    {/* This should be props.name */}
+                </input>
                 
-                <label>Username:</label>
-                <input>Username</input> */}
+                <label htmlFor="username-input">Username:</label>
+                <input type="text" id="username-input" name="username-input">
+                    {/* This should be props.username */}
+                </input>
                 
-                {/* For matching passwords */}
-                {/* <label>Password1:</label>
-                <input>Password1</input>
-                <label>Password2:</label>
-                <input>Password2</input> */}
-                
-                <button>Submit</button>
+
+                <label htmlFor="password1-input">Password1:</label>
+                <input type="password" id="password1-input" name="password1-input">
+                    {/* This should be props.password1 */}
+                </input>
+                <label htmlFor="password2-input">Password2:</label>
+                <input type="password" id="password2-input" name="password2-input">
+                    {/* This should be blank */}
+                </input>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
