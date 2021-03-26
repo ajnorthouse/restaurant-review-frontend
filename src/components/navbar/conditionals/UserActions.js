@@ -1,20 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-import CheckLogin from '../../login-signup/CheckLogin';
+import { ReactSession as Session } from 'react-client-session';
 
 export default function UserActions() {
-    const [login, setLogin] = useLocalStorage('login', [{
-        username: '',
-        name: '',
-        id: -1,
-        type: ''
-    }]);
-
     let view = <></>;
 
     //this checks the user type to decide what should be displayed.
-    switch(login.type) {
+    switch(Session.get("type")) {
         case 'user':
             view = <ReviewLink/>;
             break;

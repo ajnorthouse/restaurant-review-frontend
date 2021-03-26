@@ -18,8 +18,16 @@ import LogoutPage from './components/login-signup/LogoutPage';
 import SignUpPage from './components/login-signup/SignUpPage';
 import RestaurantViewPage from './components/restaurant/RestaurantViewPage';
 import SearchPage from './components/search/SearchPage';
+import { ReactSession as Session } from 'react-client-session';
+import React from 'react';
 
 function App() {
+  Session.setStoreType("sessionStorage");
+  Session.set("username", "");
+  Session.set("name", "");
+  Session.set("type", "");
+  Session.set("id", -1);
+
   return (
     <div>
       <Router>

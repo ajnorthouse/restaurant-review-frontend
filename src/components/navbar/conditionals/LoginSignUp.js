@@ -1,24 +1,18 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import {ReactSession as Session} from 'react-client-session';
 
 export default function LoginSignUp(props) {
-    const [login, setLogin] = useLocalStorage('login', [{
-        username: '',
-        name: '',
-        id: -1,
-        type: ''
-    }]);
-
-    let view;
+    let view = <></>;
 
     //this checks the user type to decide what should be displayed.
-    switch(login.id) {
-        case -1:
-            view = <><LogoutLink /></>;
+    switch(Session.get("type")) {
+        case '':
+            view = <><LoginLink/><SignUpLink/></>;
             break;
         default:
-            view = <><LoginLink /><SignUpLink /></>;
+            view = <LogoutLink/>;
+            break;
     }
 
     return(
@@ -29,9 +23,7 @@ export default function LoginSignUp(props) {
 }
 
 function LoginLink(props) {
-    return (
-        <Link to="/login">Login</Link>
-    )
+    return (<Link to="/login">Login</Link>);
 }
 
 function LogoutLink(props) {
