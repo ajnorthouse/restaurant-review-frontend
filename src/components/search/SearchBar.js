@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function SearchBar(props) {
+export default function SearchBar(props) {
     return(
         <form action="/search" method="get">
             <label htmlFor="search-bar">

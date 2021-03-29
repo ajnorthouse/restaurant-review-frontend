@@ -1,15 +1,15 @@
-import React from 'react';
-import { SearchBar } from './SearchBar';
-
+import React, { useEffect } from 'react';
+import {useLocation} from "react-router-dom";
+import RestaurantMiniView from '../restaurant/RestaurantMiniView';
+import SearchBar from './SearchBar';
 
 export default function SearchPage(props) {
-    /* this should have two states:
-        - Something Searched
-        - Blank / Nothing Searched */
+    const search = useLocation().search;
+    const query = new URLSearchParams(search).get('s');
 
-    /* For the searched state:
-        - display all restaurants that match
-        - do them by closest match first */
+    var searchResults = (query===null || query==='') ? 
+        <span></span> :
+        <div><CreateMiniRestaurants query={query}/></div> ;
 
     return (
         <div>
@@ -17,14 +17,7 @@ export default function SearchPage(props) {
                 <h1>Search Page</h1>
                 <SearchBar/>
             </div>
-            <div>
-                <div>
-                    <h2>Restaurant Name</h2>
-                    <p>Type of Cuisine</p>
-                    <p>Average Rating</p>
-                    <p>Address</p>
-                </div>
-            </div>
+            {searchResults}
         </div>
     );
 }
@@ -43,4 +36,29 @@ async function callAPI(searchString, setError, setItems) {
         console.log(err);
         setError(err.message);
     }
+}
+
+
+function CreateMiniRestaurants() {
+    //collects JSON response and converts into JSON object
+    let jsonString = '[{"name":"asdf", "cuisine":"asdf", "address":"asdf", "average_rating":"asdf"},{"name":"fdsa", "cuisine":"fdsa", "address":"fdsa", "average_rating":"fdsa"}]';
+    let json = JSON.parse(jsonString);
+
+    //creates empty var for collection html elements
+    let miniRestaurants;
+
+    //loops through the json object to create html elements
+    json.forEach((item) => {
+        miniRestaurants = <>
+            <div>
+                <RestaurantMiniView
+                    title={item.name}
+                    cuisine={item.cuisine}
+                    address={item.address}
+                    avg_rating={item.average_rating}/>
+            </div> {miniRestaurants}</>;
+    });
+
+    //returns the full set of elements
+    return miniRestaurants;
 }
