@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {useLocation} from "react-router-dom";
 import RestaurantMiniView from '../restaurant/RestaurantMiniView';
-import { useFetch } from '../../helpers/AxiosExample';
+import { useFetch, table, getMethod } from '../../helpers/AxiosExample';
 import SearchBar from './SearchBar';
 
 export default function SearchPage(props) {
@@ -26,40 +26,47 @@ export default function SearchPage(props) {
 
 function CreateMiniRestaurants(query) {
     //calls axios method to search for restaurants
-    let response = useFetch('getById', 1);
+    let response = useFetch(table.RESTAURANT, getMethod.SEARCH, query.query);
+
 
     //this handles the return for the async call
     if (response.loading === false) {
+        //this pulls the JSON objects out of the promise array.
         let JSON = (response.data.count !== undefined) ? 
-            response.data.results:
+            response.data.results :
             [response.data];
-        console.log(JSON);
+
 
         //creates empty var for collection html elements
         let miniRestaurants = <></>;
 
-        //loops through the json object to create html elements
-        // json.forEach((item) => {
-        //     miniRestaurants = <>
-        //         <div>
-        //             <RestaurantMiniView
-        //                 title={item.name}
-        //                 cuisine={item.cuisine}
-        //                 address={item.address}
-        //                 avg_rating={item.average_rating}/>
-        //         </div> {miniRestaurants}</>;
-        // });
-        //loops through the json object to create html elements
-        for (var x = 0; x < JSON.length; x++) {
+
+        //if statement for checking edge-case of only one restaurant returned
+        if (JSON[0].name === undefined) {
+            //for loop for iterating through the list
+            for (var x = 0; x < JSON[0].length; x++) {
+                console.log(x);
+                miniRestaurants = <>{miniRestaurants}
+                    <div>
+                        <RestaurantMiniView
+                        title={JSON[0][x].name}
+                        cuisine={JSON[0][x].cuisine}
+                        address={JSON[0][x].address}
+                        avg_rating={JSON[0][x].averageRating}/>
+                    </div></>;
+            };
+        } else {
+            //single object return
             miniRestaurants = <>
                 <div>
                     <RestaurantMiniView
-                    title={JSON[x].name}
-                    cuisine={JSON[x].height}
-                    address={JSON[x].mass}
-                    avg_rating={JSON[x].skin_color}/>
+                    title={JSON.name}
+                    cuisine={JSON.cuisine}
+                    address={JSON.address}
+                    avg_rating={JSON.averageRating}/>
                 </div> {miniRestaurants}</>;
-        };
+        }
+
 
         //returns the full set of elements
         return miniRestaurants;

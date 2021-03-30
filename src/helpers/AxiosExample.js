@@ -14,7 +14,8 @@ export const getMethod = {
   BY_USERNAME:'username/',
   BY_RATING:'rating/',
   BY_USERID:'userid/',
-  BY_RESTAURANTID:'restaurantid/'
+  BY_RESTAURANTID:'restaurantid/',
+  SEARCH: ''
 }
 const htmlRequest = {
   POST:'create/',
