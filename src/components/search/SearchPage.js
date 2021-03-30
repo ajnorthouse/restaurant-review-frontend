@@ -24,29 +24,11 @@ export default function SearchPage(props) {
 }
 
 
-async function callAPI(searchString) {
-    try {
-        // const res = await fetch("http://localhost:8080/api/restaurant/name/Elmo's%20Bakery");
-        // if (!res.ok) {
-        //     //throw Error(res.statusText);
-        // }
-        // const json = await res.json();
-        let jsonString = '[{"restaurantId":1,"name":"Elmo\'s Bakery","address":"123 Seasame Street","cuisine":"american","averageRating":3}]';
-        let result = await jsonString;
-        return JSON.parse(result);
-    } catch (err) {
-        console.log(err);
-        //setError(err.message);
-    }
-}
-
-
 function CreateMiniRestaurants(query) {
-    // let json = callAPI(query.query);
-    // console.log(query.query);
-    // console.log(json);
-
+    //calls axios method to search for restaurants
     let response = useFetch('getById', 1);
+
+    //this handles the return for the async call
     if (response.loading === false) {
         let JSON = (response.data.count !== undefined) ? 
             response.data.results:
