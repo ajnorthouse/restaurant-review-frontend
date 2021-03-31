@@ -7,11 +7,12 @@ export default function LoginSignUp(props) {
 
     //this checks the user type to decide what should be displayed.
     switch(Session.get("type")) {
-        case '':
-            view = <><LoginLink/><SignUpLink/></>;
+        case "ADMIN":
+        case "USER":
+            view = <LogoutLink/>;
             break;
         default:
-            view = <LogoutLink/>;
+            view = <><LoginLink/><SignUpLink/></>;
             break;
     }
 

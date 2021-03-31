@@ -5,8 +5,8 @@ import LoginSignUp from './conditionals/LoginSignUp';
 export default function NavBar(props) {
     return (
         <nav>
-            <UserActions />
-            <LoginSignUp />
+            <UserActions/>
+            <LoginSignUp/>
         </nav>
     );
 }

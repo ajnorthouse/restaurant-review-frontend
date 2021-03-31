@@ -11,14 +11,16 @@ import SignUpPage from './components/login-signup/SignUpPage';
 import RestaurantViewPage from './components/restaurant/RestaurantViewPage';
 import SearchPage from './components/search/SearchPage';
 import { ReactSession as Session } from 'react-client-session';
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
   Session.setStoreType("sessionStorage");
-  Session.set("username", "");
-  Session.set("name", "");
-  Session.set("type", "");
-  Session.set("id", -1);
+  if (Session.get("username") === undefined) Session.set("username", "");
+  if (Session.get("name") === undefined) Session.set("name", "");
+  if (Session.get("type") === undefined) Session.set("type", "");
+  if (Session.get("password") === undefined) Session.set("password", "");
+  if (Session.get("id") === undefined) Session.set("id", -1);
+
 
   return (
     <div>
@@ -26,7 +28,7 @@ function App() {
           <NavBar/>
           <main>
             <Switch>
-              <Route path="/search"component={SearchPage}><SearchPage/></Route>
+              <Route path="/search" component={SearchPage}><SearchPage/></Route>
               <Route path="/review" component={LeaveReviewPage}><LeaveReviewPage/></Route>
               <Route path="/update-restaurant" component={UpdateRestaurantPage}><UpdateRestaurantPage/></Route>
 
