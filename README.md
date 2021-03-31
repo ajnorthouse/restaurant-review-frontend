@@ -84,8 +84,8 @@ Distributed under the Apache License 2.0. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Alexandre Northouse - alex.j.northouse@gmail.com
-David Perez - dpvpp22@yahoo.com
-Hema Murugan - hemalatha.psna@gmail.com
+- Alexandre Northouse - alex.j.northouse@gmail.com
+- David Perez - dpvpp22@yahoo.com
+- Hema Murugan - hemalatha.psna@gmail.com
 
 Project Link: [https://github.com/ajnorthouse/restaurant-review-frontend](https://github.com/ajnorthouse/restaurant-review-frontend)
