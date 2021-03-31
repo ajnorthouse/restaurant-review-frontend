@@ -22,7 +22,10 @@ export default function LoginPage(props){
                     // console.log(window.btoa("anorthouse:password"));
                     const response = await getEntry(tableChoice, getMethod.BY_USERNAME, username);
                     if (response.status === 200) {
-                        setResultData([response.data.userId, response.data.username, response.data.password, response.data.role, response.data.reviewCount, response.data.name]);
+                        let id = (response.data.userId === undefined) ?
+                            response.data.adminId :
+                            response.data.userId ;
+                        setResultData([id, response.data.username, response.data.password, response.data.role, response.data.reviewCount, response.data.name]);
                     }
                 } catch (error) {
                     setResultData(false);
@@ -68,8 +71,17 @@ export default function LoginPage(props){
     }
     const adminLogin = (event) => {
         setTableChoice(table.ADMIN);
+        console.log("SetTableChoice");
         event.preventDefault();
     }
+
+    let errors = error === "" ?
+        <span></span> :
+        <p className="error">{error}</p> ;
+
+    let loadingMessage = loading === "" ?
+        <span></span> :
+        <p className="loading">{loading}</p> ;
 
     return redirect ?
         (<Redirect to="/"/>) :
@@ -86,9 +98,9 @@ export default function LoginPage(props){
                 <button type="submit" onClick={userLogin}>User Login</button>
                 <button type="submit" onClick={adminLogin}>Admin Login</button>
             </form>
-            <div>{redirect}</div>
-            <div>{loading}</div>
-            <div>{error}</div>
+            <span>{redirect}</span>
+            {loadingMessage}
+            {errors}
         </div>
     );
 }
