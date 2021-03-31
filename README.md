@@ -90,4 +90,7 @@ Distributed under the Apache License 2.0. See `LICENSE` for more information.
 - David Perez - dpvpp22@yahoo.com
 - Hema Murugan - hemalatha.psna@gmail.com
 
-Project Link: [https://github.com/ajnorthouse/restaurant-review-frontend](https://github.com/ajnorthouse/restaurant-review-frontend)
+Project Links: 
+- [Front-End](https://github.com/ajnorthouse/restaurant-review-frontend)
+- [API](https://github.com/ajnorthouse/restaurant-review-api)
+- [Database](https://github.com/ajnorthouse/restaurant-review-database)
