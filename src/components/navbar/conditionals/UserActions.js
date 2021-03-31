@@ -2,19 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSession as Session } from 'react-client-session';
 
-export default function UserActions() {
+export default function UserActions(props) {
     let view = <></>;
+    console.log(1);
 
     //this checks the user type to decide what should be displayed.
     switch(Session.get("type")) {
-        case 'user':
-            view = <ReviewLink/>;
+        case 'USER':
+            view = <><SearchLink/><ReviewLink/></>;
             break;
-        case 'admin':
-            view = <UpdateLink/>;
+        case 'ADMIN':
+            view = <><SearchLink/><UpdateLink/></>;
             break;
         default:
-            view = <><SearchLink/>{view}</>;
+            view = <><SearchLink/></>;
+            break;
     }
 
     return(
