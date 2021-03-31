@@ -35,6 +35,7 @@ function CreateMiniRestaurants(query) {
         let JSON = (response.data.count !== undefined) ? 
             response.data.results :
             [response.data];
+        console.log(JSON)
 
 
         //creates empty var for collection html elements
@@ -45,7 +46,6 @@ function CreateMiniRestaurants(query) {
         if (JSON[0].name === undefined) {
             //for loop for iterating through the list
             for (var x = 0; x < JSON[0].length; x++) {
-                console.log(x);
                 miniRestaurants = <>{miniRestaurants}
                     <div>
                         <RestaurantMiniView
