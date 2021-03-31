@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
 import RestaurantMiniView from '../restaurant/RestaurantMiniView';
-import { useFetch, table, getMethod } from '../../helpers/AxiosExample';
+import {useFetch, table, getMethod} from '../../helpers/AxiosHelper';
 import SearchBar from './SearchBar';
 
 export default function SearchPage(props) {
