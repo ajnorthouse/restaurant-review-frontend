@@ -38,6 +38,8 @@
 
 This project is a demonstrative project given to us by the JUMPlus program for us to demonstrate our skills with React, Spring Boot, AWS, and MySQL databases. The stated goal of the project was something akin to yelp, a sort of service where users can leave reviews on restaurants, admins can manage restaurants, and anyone can search the website for restaurants and information on them.
 
+This is the front-end of the project, built entirely in React.js. It contains the UI that the users are supposed to interact with.
+
 ### Built With
 
 * [React](https://reactjs.org/)
