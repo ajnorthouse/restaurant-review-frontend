@@ -18,7 +18,7 @@ export const getMethod = {
     SEARCH: ''
 }
 const htmlRequest = {
-    POST:'create/',
+    POST:'add/',
     GET:'',
     PUT:'update/',
     PATCH:'update/',
